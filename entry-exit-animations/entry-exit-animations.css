@@ -1,0 +1,107 @@
+body {
+  display: grid;
+  height: 80dvh;
+  place-items: center;
+}
+
+img {
+  width: 100%;
+}
+
+.cards {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 2rem;
+  max-width: 1000px;
+  list-style: none;
+}
+
+.card {
+  width: 100%;
+  aspect-ratio: 2/3;
+  display: block;
+  background-color: tan;
+  position: relative;
+  border-radius: 1rem;
+  max-width: 220px;
+  transition: opacity 0.25s, display 0.25s allow-discrete;
+}
+
+.card.fade-out {
+  opacity: 0;
+  display: none;
+}
+
+
+.card:nth-child(2) {
+  background-color: khaki;
+}
+
+.card:nth-child(3) {
+  background-color: thistle;
+}
+
+.card:nth-child(4) {
+  background-color: wheat;
+}
+
+.delete-btn {
+  position: absolute;
+  bottom: -0.75rem;
+  right: -0.75rem;
+  width: 3rem;
+  height: 3rem;
+  padding: 0.5rem;
+  border: 4px solid;
+  border-radius: 100%;
+  background: steelblue;
+  color: white;
+
+  & img {
+    filter: invert();
+  }
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+/* with animations
+.fade-out {
+  animation: fade-out 0.25s forwards; 
+   animation: spin-and-delete 1s ease-in forwards;
+}
+*/
+
+@keyframes fade-out {
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+@keyframes spin-and-delete {
+  0% {
+    transform: rotateY(0);
+    filter: hue-rotate(0);
+  }
+  80% {
+    transform: rotateY(360deg);
+    filter: hue-rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
